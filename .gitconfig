@@ -24,7 +24,7 @@
 	defaultBranch = main
 
 [alias]
-  	# Run git pr to open a pr from console
+  	# Run git pr to open a pr from console; gh must be installed
   	pr = "!f() { gh pr view --web; };f"
 
 	# List contributors with number of commits.
