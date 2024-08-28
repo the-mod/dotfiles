@@ -24,8 +24,8 @@
 	defaultBranch = main
 
 [alias]
-  # Run git pr to open a pr from console
-  pr = "!f() { gh pr view --web; };f"
+  	# Run git pr to open a pr from console
+  	pr = "!f() { gh pr view --web; };f"
 
 	# List contributors with number of commits.
 	contributors = shortlog --summary --numbered
