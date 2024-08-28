@@ -1,0 +1,47 @@
+[user]
+	name = the-mod
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[branch]
+	# Show most recently changed branches first.
+	sort = -committerdate
+
+[pull]
+	rebase = false
+
+[core]
+	editor = vim
+
+[pager]
+	branch = false
+
+[init]
+	defaultBranch = main
+
+[alias]
+  # Run git pr to open a pr from console
+  pr = "!f() { gh pr view --web; };f"
+
+	# List contributors with number of commits.
+	contributors = shortlog --summary --numbered
+
+	# Remove branches that have already been merged with main.
+	# a.k.a. ‘delete merged’
+	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+
+	# Interactive rebase with the given number of latest commits.
+	reb = "!r() { git rebase -i HEAD~$1; }; r"
+
+	# View abbreviated SHA, description, and history graph of the latest 20 commits.
+	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+
+	# View the current working tree status using the short format.
+	s = status -s
+
+	# Show the diff between the latest commit and the current state.
+	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
